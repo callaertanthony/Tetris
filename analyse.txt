@@ -1,0 +1,8 @@
+pièce :
+	-couleur
+	-position dans l'air du jeu
+	-type
+	-orientation
+aire du jeu :
+	-hauteur
+	-largeur
