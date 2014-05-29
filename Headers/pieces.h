@@ -2,7 +2,7 @@
 pieces.h
 ------
 @Author : Anthony Callaert
-@Date : 22/04/2014
+@Date : 22/05/2014
 ------
 Prototypes des fonctions et variables des pièces du jeu
 */
@@ -25,7 +25,7 @@ extern int formes[NB_PIECES][4][4][4];
   coordonnee : coordonnee dans le plateau de jeu
  */
 struct piece_s{
-  int type_forme;
+  int forme[4][4];
   int indice_rotation;
 
   int coordonnee_x;
@@ -34,13 +34,7 @@ struct piece_s{
 
 typedef struct piece_s piece_s;
 
-/*
-  Procédure afficherForme
-  affiche la forme donnée en paramètre
-  @param :
-    -int tab[4][4]
-*/
-void afficherForme(int tab[4][4]);
+void placerDansCoin(int tab[4][4]);
 
 /*
   Procédure afficherPiece
@@ -82,5 +76,9 @@ void deplacerPiece(piece_s *piece, direction_u direction);
 int estCoordonneePiece(int i, int j, piece_s piece);
 
 int valeurPourPlateau(int i, int j, piece_s piece);
+
+int peutDeplacer(piece_s piece, direction_u direction, int plateau[HAUTEUR_PLATEAU + 5][LARGEUR_PLATEAU + 2]);
+
+void ajouterPiecePlateau(piece_s piece, int plateau[HAUTEUR_PLATEAU + 5][LARGEUR_PLATEAU + 2]);
 
 #endif
