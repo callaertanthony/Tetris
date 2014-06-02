@@ -7,11 +7,7 @@ pieces.c
 Fonctions pour les pièces du jeu
  */
 
-#include <stdio.h>
-#include <stdlib.h>
-#include "constantes.h"
 #include "pieces.h"
-#include "tableaux.h"
 
 int formes[NB_PIECES][4][4][4] = {
   {
@@ -135,7 +131,7 @@ void afficherPiece(piece_s piece){
 }
 
 int initialiserPiece(piece_s *piece, int type_forme){
-  int i, j;
+  int i, j, nb_h;
   if(type_forme < 0 || type_forme >= NB_PIECES){
     return EXIT_FAILURE;
   } else {
@@ -144,9 +140,10 @@ int initialiserPiece(piece_s *piece, int type_forme){
 	piece->forme[i][j] = formes[type_forme][0][i][j];
       }
     }
-    piece->coordonnee_x = 4;
-    piece->coordonnee_y = 0;
     placerDansCoin(piece->forme);
+    nb_h = compterHorizontalesVides(piece->forme);
+    piece->coordonnee_x = 4;
+    piece->coordonnee_y = 1 - nb_h;
     piece->indice_rotation = 0;
   }
   return EXIT_SUCCESS;
@@ -217,7 +214,7 @@ int valeurPourPlateau(int i, int j, piece_s piece){
   return piece.forme[i-piece.coordonnee_y][j-piece.coordonnee_x];
 }
 
-int peutDeplacer(piece_s piece, direction_u direction, int plateau[HAUTEUR_PLATEAU + 5][LARGEUR_PLATEAU + 2]){
+int peutDeplacer(piece_s piece, direction_u direction, int plateau[HAUTEUR_PLATEAU + 2][LARGEUR_PLATEAU + 2]){
   int i, j, x, bool;
   switch(direction){
   case BAS:
@@ -290,7 +287,7 @@ int peutDeplacer(piece_s piece, direction_u direction, int plateau[HAUTEUR_PLATE
   return bool;
 }
 
-void ajouterPiecePlateau(piece_s piece, int plateau[HAUTEUR_PLATEAU + 5][LARGEUR_PLATEAU + 2]){
+void ajouterPiecePlateau(piece_s piece, int plateau[HAUTEUR_PLATEAU + 2][LARGEUR_PLATEAU + 2]){
   int i, j;
   for(i = 0; i < 4; i++){
     for(j = 0; j < 4; j++){

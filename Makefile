@@ -1,15 +1,21 @@
 CC = gcc
-CFLAGS = -Wall -Werror -ansi -pedantic -lm
+CFLAGS = -Wall -Werror -ansi -pedantic -lm -lncurses
 CFLAGS += -D_XOPEN_SOURCE=500
 CFLAGS += -g
 EXEC = tetris
-FTEMPO = *~ *.o *.gch
-DIRH = -I Headers
+FTEMPO = *~ *.o
+DIRH = Headers
+DIRC = Sources
 
-all: tetris
+all: mrproper tetris
+
+.PHONY : clean mrproper
 
 tetris: Sources/*.c
-	$(CC) $(CFLAGS) $(DIRH) -o $@ $^
+	$(CC) $(CFLAGS) -I $(DIRH) -o $@ $^
 
 clean:
-	$(RM) $(EXEC) $(FTEMPO)
+	@((cd $(DIRH) && $(MAKE) $@) && (cd $(DIRC) && $(MAKE) $@))
+
+mrproper: clean
+	$(RM) $(EXEC)

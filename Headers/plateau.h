@@ -20,7 +20,7 @@ procédure initialiserPlateau
 ------
 initialise un plateau de jeu avec un encadrement de 1 et un contenu de 0
  */
-void initialiserPlateau(int plateau[HAUTEUR_PLATEAU + 5][LARGEUR_PLATEAU + 2]);
+void initialiserPlateau(int plateau[HAUTEUR_PLATEAU][LARGEUR_PLATEAU]);
 
 /*
 procédure afficherPlateauComplet
@@ -28,7 +28,7 @@ procédure afficherPlateauComplet
   -plateau : le plateau à afficher au complet
 @return : null
  */
-void afficherPlateauComplet(int plateau[HAUTEUR_PLATEAU + 5][LARGEUR_PLATEAU + 2]);
+void afficherPlateauComplet(int plateau[HAUTEUR_PLATEAU][LARGEUR_PLATEAU]);
 
 /*
 procédure afficherPlateau
@@ -38,7 +38,7 @@ procédure afficherPlateau
 ------
 affiche que la partie visible pour le jeu, les 4 premières lignes sont ignorées
  */
-void afficherPlateau(int plateau[HAUTEUR_PLATEAU + 5][LARGEUR_PLATEAU + 2]);
+void afficherPlateau(int plateau[HAUTEUR_PLATEAU][LARGEUR_PLATEAU]);
 
 void imprimerCase(int x);
 
@@ -51,6 +51,6 @@ procédure afficherPlateauJeu
 affiche que la partie visible pour le jeu, les 4 premières lignes sont ignorées
 n'affiche pas les cases vides
  */
-void afficherPlateauJeu(int plateau[HAUTEUR_PLATEAU + 5][LARGEUR_PLATEAU + 2], piece_s piece);
+void afficherPlateauJeu(int plateau[HAUTEUR_PLATEAU][LARGEUR_PLATEAU], piece_s piece);
 
 #endif

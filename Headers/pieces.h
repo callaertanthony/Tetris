@@ -9,7 +9,11 @@ Prototypes des fonctions et variables des pièces du jeu
 #ifndef PIECE_H
 #define PIECE_H
 
+#include <stdio.h>
+#include <stdlib.h>
 #include "constantes.h"
+#include "pieces.h"
+#include "tableaux.h"
 
 /*
   Déclaration des formes pour les pièces

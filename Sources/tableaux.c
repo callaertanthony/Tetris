@@ -51,3 +51,31 @@ void pivoterTableau(int tab[4][4]){
     }
   }
 }
+
+int compterVerticalesVides(int tab[4][4]){
+  int i, j, nb = 0, x;
+  for(j = 3; j >= 0; j--){
+    x = 0;
+    for(i = 0; i < 4; i++){
+      x += tab[i][j];
+    }
+    if(x == 0){
+      nb++;
+    }
+  }
+  return nb;
+}
+
+int compterHorizontalesVides(int tab[4][4]){
+  int i, j, nb = 0, x;
+  for(i = 0; i < 4; i++){
+    x = 0;
+    for(j = 0; j < 4; j++){
+      x += tab[i][j];
+    }
+    if(x == 0){
+      nb++;
+    }
+  }
+  return nb;
+}

@@ -23,4 +23,8 @@ void afficherTableau(int tab[4][4]);
 
 void pivoterTableau(int tab[4][4]);
 
+int compterVerticalesVides(int tab[4][4]);
+
+int compterHorizontalesVides(int tab[4][4]);
+
 #endif
