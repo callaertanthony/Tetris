@@ -33,6 +33,7 @@ int recupererFenetre(WINDOW *fenetre){
   if(piece_file == NULL){
     return EXIT_SUCCESS;
   }
+  wclear(fenetre);
   fenetre = getwin(piece_file);
   if(fenetre == NULL){
     return EXIT_FAILURE;
@@ -41,4 +42,3 @@ int recupererFenetre(WINDOW *fenetre){
   wrefresh(fenetre);
   return EXIT_SUCCESS;
 }
-

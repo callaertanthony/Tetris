@@ -9,7 +9,7 @@ Fonctions pour les pièces du jeu
 
 #include "pieces.h"
 
-int formes[NB_PIECES][4][4][4] = {
+int formes[NB_PIECES][4][4] = {
   {
     /*
       indice : 0
@@ -18,30 +18,10 @@ int formes[NB_PIECES][4][4][4] = {
       ------
       valeur : 2
     */
-    {
       {0,0,0,0},
       {0,2,2,0},
       {0,2,2,0},
       {0,0,0,0}
-    },
-    {
-      {0,0,0,0},
-      {0,2,2,0},
-      {0,2,2,0},
-      {0,0,0,0}
-    },
-    {
-      {0,0,0,0},
-      {0,2,2,0},
-      {0,2,2,0},
-      {0,0,0,0}
-    },
-    {
-      {0,0,0,0},
-      {0,2,2,0},
-      {0,2,2,0},
-      {0,0,0,0}
-    }
   },
   {
     /*
@@ -51,30 +31,10 @@ int formes[NB_PIECES][4][4][4] = {
       ------
       valeur : 2
     */
-    {
       {0,0,0,0},
       {0,0,3,3},
       {0,3,3,0},
       {0,0,0,0}
-    },
-    {
-      {0,0,3,0},
-      {0,0,3,3},
-      {0,0,0,3},
-      {0,0,0,0}
-    },
-    {
-      {0,0,0,0},
-      {0,0,3,3},
-      {0,3,3,0},
-      {0,0,0,0}
-    },
-    {
-      {0,0,3,0},
-      {0,0,3,3},
-      {0,0,0,3},
-      {0,0,0,0}
-    }
   }
 };
 
@@ -137,13 +97,13 @@ int initialiserPiece(piece_s *piece, int type_forme){
   } else {
     for(i = 0; i < 4; i++){
       for(j = 0; j < 4; j++){
-	piece->forme[i][j] = formes[type_forme][0][i][j];
+	piece->forme[i][j] = formes[type_forme][i][j];
       }
     }
     placerDansCoin(piece->forme);
     nb_h = compterHorizontalesVides(piece->forme);
     piece->coordonnee_x = 4;
-    piece->coordonnee_y = 1 - nb_h;
+    piece->coordonnee_y = - 3 +nb_h - nb_h;
     piece->indice_rotation = 0;
   }
   return EXIT_SUCCESS;
@@ -214,7 +174,7 @@ int valeurPourPlateau(int i, int j, piece_s piece){
   return piece.forme[i-piece.coordonnee_y][j-piece.coordonnee_x];
 }
 
-int peutDeplacer(piece_s piece, direction_u direction, int plateau[HAUTEUR_PLATEAU + 2][LARGEUR_PLATEAU + 2]){
+int peutDeplacer(piece_s piece, direction_u direction, int plateau[HAUTEUR_PLATEAU][LARGEUR_PLATEAU]){
   int i, j, x, bool;
   switch(direction){
   case BAS:
@@ -273,7 +233,7 @@ int peutDeplacer(piece_s piece, direction_u direction, int plateau[HAUTEUR_PLATE
 	}
       }
       if(x != 0){
-	if(plateau[piece.coordonnee_y + i][piece.coordonnee_x + j - 1] != 0){
+	if(plateau[piece.coordonnee_y + i][piece.coordonnee_x + j + 1] != 0){
 	  bool++;
 	}
       }
@@ -287,7 +247,7 @@ int peutDeplacer(piece_s piece, direction_u direction, int plateau[HAUTEUR_PLATE
   return bool;
 }
 
-void ajouterPiecePlateau(piece_s piece, int plateau[HAUTEUR_PLATEAU + 2][LARGEUR_PLATEAU + 2]){
+void ajouterPiecePlateau(piece_s piece, int plateau[HAUTEUR_PLATEAU][LARGEUR_PLATEAU]){
   int i, j;
   for(i = 0; i < 4; i++){
     for(j = 0; j < 4; j++){

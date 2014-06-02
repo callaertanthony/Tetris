@@ -15,7 +15,7 @@ void initialiserPlateau(int plateau[HAUTEUR_PLATEAU][LARGEUR_PLATEAU]){
 
   for(i = 0; i < HAUTEUR_PLATEAU; i++){
     for(j = 0; j < LARGEUR_PLATEAU; j++){
-      if(j == 0 || j == LARGEUR_PLATEAU - 1 || i == HAUTEUR_PLATEAU - 1 || i == 0){
+      if(j == 0 || j == LARGEUR_PLATEAU - 1 || i == HAUTEUR_PLATEAU - 1 ){
 	plateau[i][j] = 1;
       } else {
 	plateau[i][j] = 0;

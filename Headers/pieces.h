@@ -20,7 +20,7 @@ Prototypes des fonctions et variables des pièces du jeu
   NB_PIECES : le nombre de pièces du jeu
   Chaque forme est déclinée sous 4 rotations possibles
 */
-extern int formes[NB_PIECES][4][4][4];
+extern int formes[NB_PIECES][4][4];
 
 /*
   Déclaration de la structure piece
@@ -81,8 +81,8 @@ int estCoordonneePiece(int i, int j, piece_s piece);
 
 int valeurPourPlateau(int i, int j, piece_s piece);
 
-int peutDeplacer(piece_s piece, direction_u direction, int plateau[HAUTEUR_PLATEAU + 5][LARGEUR_PLATEAU + 2]);
+int peutDeplacer(piece_s piece, direction_u direction, int plateau[HAUTEUR_PLATEAU][LARGEUR_PLATEAU]);
 
-void ajouterPiecePlateau(piece_s piece, int plateau[HAUTEUR_PLATEAU + 5][LARGEUR_PLATEAU + 2]);
+void ajouterPiecePlateau(piece_s piece, int plateau[HAUTEUR_PLATEAU][LARGEUR_PLATEAU]);
 
 #endif
