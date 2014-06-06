@@ -15,8 +15,10 @@ Définit les constantes du programme
 #define HAUTEUR_PLATEAU (20 + 2)
 #define LARGEUR_PLATEAU (10 + 2)
 
-#define NB_PIECES 2
+#define NB_PIECES 5
 
 #define ATTENTE 1000
+
+#define COLOR_ORANGE 1
 
 #endif

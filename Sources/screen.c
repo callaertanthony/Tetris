@@ -23,8 +23,12 @@ int initialiserScreen(){
   getmaxyx(stdscr, y, x);
   printw("x : %d\n", x);
   printw("y : %d\n", y);
-  init_pair(2, COLOR_WHITE, COLOR_GREEN);
-  init_pair(3, COLOR_WHITE, COLOR_RED);
+  init_color(COLOR_ORANGE, 1000, 500, 0);
+  init_pair(2, COLOR_WHITE, COLOR_YELLOW);
+  init_pair(3, COLOR_WHITE, COLOR_GREEN);
+  init_pair(4, COLOR_WHITE, COLOR_MAGENTA);
+  init_pair(5, COLOR_WHITE, COLOR_ORANGE);
+  init_pair(6, COLOR_WHITE, COLOR_CYAN);
   clear();
   return EXIT_SUCCESS;
 }
