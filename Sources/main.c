@@ -41,7 +41,9 @@ int main(int argc, char **argv){
     while(jouer == 0 && changer_piece != 0){
       switch(wgetch(jeu_f)){
       case KEY_UP:
-	jouer = 1;
+	if(peutPivoterPiece(piece, plateau) == 0){
+	  pivoterPiece(&piece);
+	}
 	break;
       case KEY_DOWN:
 	if(peutDeplacer(piece, BAS, plateau) == 0){

@@ -258,9 +258,19 @@ void ajouterPiecePlateau(piece_s piece, int plateau[HAUTEUR_PLATEAU][LARGEUR_PLA
   }
 }
 
-int peutPivoterPiece(piece_s piece){
+int peutPivoterPiece(piece_s piece, int plateau[HAUTEUR_PLATEAU][LARGEUR_PLATEAU]){
+  int i, j;
   piece_s piece_tempo;
   piece_tempo = piece;
   pivoterPiece(&piece_tempo);
+  for(i = 0; i < 4; i++){
+    for(j = 0; j < 4; j++){
+      if(piece_tempo.forme[i][j] != 0){
+	if(plateau[piece_tempo.coordonnee_y + i][piece_tempo.coordonnee_x + j] != 0){
+	  return 1;
+	}
+      }
+    }
+  }
   return 0;
 }
