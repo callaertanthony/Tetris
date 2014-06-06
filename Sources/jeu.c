@@ -42,3 +42,6 @@ int recupererFenetre(WINDOW *fenetre){
   wrefresh(fenetre);
   return EXIT_SUCCESS;
 }
+
+void jouer(){
+}

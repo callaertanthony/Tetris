@@ -17,4 +17,6 @@ Définit les constantes du programme
 
 #define NB_PIECES 2
 
+#define ATTENTE 1000
+
 #endif

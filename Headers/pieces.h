@@ -85,4 +85,6 @@ int peutDeplacer(piece_s piece, direction_u direction, int plateau[HAUTEUR_PLATE
 
 void ajouterPiecePlateau(piece_s piece, int plateau[HAUTEUR_PLATEAU][LARGEUR_PLATEAU]);
 
+int peutPivoterPiece(piece_s piece);
+
 #endif

@@ -30,5 +30,7 @@ void pieceDansFenetreJeu(WINDOW *jeu_f, piece_s piece);
 
 void pieceDansFenetrePreview(WINDOW *preview, piece_s piece);
 
-void afficherJeu(WINDOW *jeu_f, int plateau[HAUTEUR_PLATEAU][LARGEUR_PLATEAU], piece_s piece);
+void afficherJeuPiece(WINDOW *jeu_f, int plateau[HAUTEUR_PLATEAU][LARGEUR_PLATEAU], piece_s piece);
+
+void afficherJeu(WINDOW *jeu_f, int plateau[HAUTEUR_PLATEAU][LARGEUR_PLATEAU]);
 #endif

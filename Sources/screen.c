@@ -69,10 +69,12 @@ void pieceDansFenetreJeu(WINDOW *jeu_f, piece_s piece){
 }
 
 void pieceDansFenetrePreview(WINDOW *preview, piece_s piece){
+  wclear(preview);
+  box(preview, 0, 0);
   afficherPieceDansFenetre(preview, piece, 1, 1);
 }
 
-void afficherJeu(WINDOW *jeu_f, int plateau[HAUTEUR_PLATEAU][LARGEUR_PLATEAU], piece_s piece){
+void afficherJeuPiece(WINDOW *jeu_f, int plateau[HAUTEUR_PLATEAU][LARGEUR_PLATEAU], piece_s piece){
   int i, j;
   wclear(jeu_f);
   box(jeu_f, 0, 0);
@@ -87,4 +89,20 @@ void afficherJeu(WINDOW *jeu_f, int plateau[HAUTEUR_PLATEAU][LARGEUR_PLATEAU], p
     }
   }
   pieceDansFenetreJeu(jeu_f, piece);
+}
+
+void afficherJeu(WINDOW *jeu_f, int plateau[HAUTEUR_PLATEAU][LARGEUR_PLATEAU]){
+  int i, j;
+  wclear(jeu_f);
+  box(jeu_f, 0, 0);
+  for(i=1; i < HAUTEUR_PLATEAU - 2; i++){
+    for(j = 1; j < LARGEUR_PLATEAU - 1; j++){
+      if(plateau[i][j] != 0){
+	wattron(jeu_f, COLOR_PAIR(plateau[i][j]));
+	mvwprintw(jeu_f, i, j*2 - 1, "  ");
+	wattroff(jeu_f, COLOR_PAIR(plateau[i][j]));
+	wrefresh(jeu_f);
+      }
+    }
+  }
 }

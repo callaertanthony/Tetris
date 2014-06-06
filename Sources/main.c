@@ -12,8 +12,8 @@
 #define DELAY 30000
 int main(int argc, char **argv){
   WINDOW *jeu_f, *preview;
-  piece_s piece;
-  int type_piece, i;
+  piece_s piece, piece_suivante;
+  int type_piece = 0, jouer = 0;
   int plateau[HAUTEUR_PLATEAU][LARGEUR_PLATEAU];
 
   initialiserPlateau(plateau);
@@ -21,50 +21,45 @@ int main(int argc, char **argv){
   
   preview = creerFenetrePreview();
   jeu_f = creerFenetreJeu();
-  wrefresh(jeu_f);
-  refresh();
-  sauvegarderFenetre(jeu_f);
 
-  i = 0;
-    type_piece = i%2;
-    initialiserPiece(&piece, type_piece);
-    for(i = 0; i < 10; i++){
-      deplacerPiece(&piece, BAS);
+  srand(time(NULL));
+  type_piece = rand() % NB_PIECES;
+  initialiserPiece(&piece, type_piece);
+  pieceDansFenetrePreview(preview, piece);
+  getch();
+  
+  while(jouer == 0){
+    srand(time(NULL));
+    type_piece = rand() % NB_PIECES;
+    initialiserPiece(&piece_suivante, type_piece);
+    pieceDansFenetrePreview(preview, piece_suivante);
+    switch(getch()){
+    case KEY_UP:
+      jouer = 1;
+      break;
+    case KEY_DOWN:
+      if(peutDeplacer(piece, BAS, plateau) == 0){
+	deplacerPiece(&piece, BAS);
+      }
+      break;
+    case KEY_RIGHT:
+      if(peutDeplacer(piece, DROITE, plateau) == 0){
+	deplacerPiece(&piece, DROITE);
+      }
+      break;
+    case KEY_LEFT:
+      if(peutDeplacer(piece, GAUCHE, plateau) == 0){
+	deplacerPiece(&piece, GAUCHE);
+      }
+      break;
+    case 'q':
+      jouer = 1;
+      break;
     }
-    pieceDansFenetrePreview(preview, piece);
-    pieceDansFenetreJeu(jeu_f, piece);
-    getch();
-    while(peutDeplacer(piece, GAUCHE, plateau) == 0){
-      deplacerPiece(&piece, GAUCHE);
-      afficherJeu(jeu_f, plateau, piece);
-      usleep(100000);
-    }
-    while(peutDeplacer(piece, DROITE, plateau) == 0){
-      deplacerPiece(&piece, DROITE);
-      afficherJeu(jeu_f, plateau, piece);
-      usleep(100000);
-    }
-    ajouterPiecePlateau(piece, plateau);
-    initialiserPiece(&piece, 1);
-    afficherJeu(jeu_f, plateau, piece);
-    while(peutDeplacer(piece, BAS, plateau) == 0){
-      deplacerPiece(&piece, BAS);
-      afficherJeu(jeu_f, plateau, piece);
-      usleep(100000);
-    }
-    while(peutDeplacer(piece, GAUCHE, plateau) == 0){
-      deplacerPiece(&piece, GAUCHE);
-      afficherJeu(jeu_f, plateau, piece);
-      usleep(100000);
-    }
-    while(peutDeplacer(piece, BAS, plateau) == 0){
-      deplacerPiece(&piece, BAS);
-      afficherJeu(jeu_f, plateau, piece);
-      usleep(100000);
-    }
+    afficherJeuPiece(jeu_f, plateau, piece);
+  }
   getch();
   terminerScreen();
-  afficherPlateauJeu(plateau, piece);
-  printf("%d\n", i);
+  afficherPlateau(plateau);
   return EXIT_SUCCESS;
 }

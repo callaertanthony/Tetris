@@ -53,4 +53,10 @@ n'affiche pas les cases vides
  */
 void afficherPlateauJeu(int plateau[HAUTEUR_PLATEAU][LARGEUR_PLATEAU], piece_s piece);
 
+void supprimerLignes(int plateau[HAUTEUR_PLATEAU][LARGEUR_PLATEAU], int y, int nb_lignes);
+
+int estLignePleine(int plateau[HAUTEUR_PLATEAU][LARGEUR_PLATEAU], int y);
+
+void supprimerLignesPleines(int plateau[HAUTEUR_PLATEAU][LARGEUR_PLATEAU]);
+
 #endif

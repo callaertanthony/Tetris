@@ -257,3 +257,10 @@ void ajouterPiecePlateau(piece_s piece, int plateau[HAUTEUR_PLATEAU][LARGEUR_PLA
     }
   }
 }
+
+int peutPivoterPiece(piece_s piece){
+  piece_s piece_tempo;
+  piece_tempo = piece;
+  pivoterPiece(&piece_tempo);
+  return 0;
+}
