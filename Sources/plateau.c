@@ -104,7 +104,7 @@ int estLignePleine(int plateau[HAUTEUR_PLATEAU][LARGEUR_PLATEAU], int y){
 }
 
 void supprimerLignesPleines(int plateau[HAUTEUR_PLATEAU][LARGEUR_PLATEAU]){
-  int j = 0, y, nb_lignes;
+  int j = 0, y, nb_lignes = 0;
   while(j < HAUTEUR_PLATEAU - 1){
     if(estLignePleine(plateau, j) == 0){
       y = j;

@@ -78,7 +78,7 @@ void afficherJeuPiece(WINDOW *jeu_f, int plateau[HAUTEUR_PLATEAU][LARGEUR_PLATEA
   int i, j;
   wclear(jeu_f);
   box(jeu_f, 0, 0);
-  for(i=1; i < HAUTEUR_PLATEAU - 2; i++){
+  for(i=1; i < HAUTEUR_PLATEAU - 1; i++){
     for(j = 1; j < LARGEUR_PLATEAU - 1; j++){
       if(plateau[i][j] != 0){
 	wattron(jeu_f, COLOR_PAIR(plateau[i][j]));
