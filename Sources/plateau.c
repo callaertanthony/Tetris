@@ -86,7 +86,7 @@ void supprimerLignes(int plateau[HAUTEUR_PLATEAU][LARGEUR_PLATEAU], int y, int n
       plateau[j+y][i] = 0;
     }
   }
-  for(j = y; j > 0 + nb_lignes; j--){
+  for(j = y+nb_lignes-1; j > 0 + nb_lignes; j--){
     for(i = 1; i < LARGEUR_PLATEAU - 1; i ++){
       plateau[j][i] = plateau[j - nb_lignes][i];
     }
