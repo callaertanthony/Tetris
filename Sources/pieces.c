@@ -149,9 +149,10 @@ int initialiserPiece(piece_s *piece, int type_forme){
 }
 
 void pivoterPiece(piece_s *piece){
-  if(piece->indice_rotation == 3){
+  if(piece->indice_rotation == 7 || piece->indice_rotation == 3){
     piece->indice_rotation = 0;
     pivoterTableau(piece->forme);
+    symetrieTableau(piece->forme);
     placerDansCoin(piece->forme);
   } else {
     piece->indice_rotation += 1;
@@ -313,3 +314,4 @@ int peutPivoterPiece(piece_s piece, int plateau[HAUTEUR_PLATEAU][LARGEUR_PLATEAU
   }
   return 0;
 }
+

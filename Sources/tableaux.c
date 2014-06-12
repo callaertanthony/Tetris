@@ -79,3 +79,14 @@ int compterHorizontalesVides(int tab[4][4]){
   }
   return nb;
 }
+
+void symetrieTableau(int tab[4][4]){
+  int temp[4][4];
+  int i, j;
+  for(i = 0; i < 4; i++){
+    for(j = 0; j < 4; j++){
+      temp[i][3 - j] = tab[i][j];
+    }
+  }
+  copierTableau(temp, tab);
+}

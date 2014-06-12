@@ -27,4 +27,6 @@ int compterVerticalesVides(int tab[4][4]);
 
 int compterHorizontalesVides(int tab[4][4]);
 
+void symetrieTableau(int tab[4][4]);
+
 #endif
