@@ -93,6 +93,17 @@ void supprimerLignes(int plateau[HAUTEUR_PLATEAU][LARGEUR_PLATEAU], int y, int n
   }
 }
 
+int estEnHaut(int plateau[HAUTEUR_PLATEAU][LARGEUR_PLATEAU]){
+  int i=0;
+
+  for(i=1;i<LARGEUR_PLATEAU - 1;i++){
+    if(plateau[4][i] != 0)
+      return 1;
+  }
+
+  return 0;
+}
+
 int estLignePleine(int plateau[HAUTEUR_PLATEAU][LARGEUR_PLATEAU], int y){
   int i, x = 0;
   for(i = 1; i < LARGEUR_PLATEAU - 1; i++){
