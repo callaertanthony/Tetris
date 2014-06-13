@@ -59,4 +59,6 @@ int estLignePleine(int plateau[HAUTEUR_PLATEAU][LARGEUR_PLATEAU], int y);
 
 void supprimerLignesPleines(int plateau[HAUTEUR_PLATEAU][LARGEUR_PLATEAU]);
 
+int estEnHaut(int plateau[HAUTEUR_PLATEAU][LARGEUR_PLATEAU]);
+
 #endif
